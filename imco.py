@@ -211,7 +211,7 @@ def main():
 		files = get_all_files_from_folder(args.dir, args.type)
 		is_folder_empty(files, args.type, args.dir)
 		fileConverter.set_and_save_dirs("_image_converter_", args.to, args.dir)
-		print(f"\n😎 FileConverting is running. It just takes a moment.\nYou find your fill in the folder ./{args.dir}.")
+		print(f"\n😎 FileConverting is running. It just takes a moment.\nYou find your files in the folder ./{args.dir}.")
 		for file in files:
 			fileConverter.save_files(file, args.to)
 			fileConverter.convert_and_save_image()
@@ -265,7 +265,7 @@ def main():
 			is_folder_empty(files, args.type, args.dir)
 			size = (args.thumb[0], args.thumb[1])
 			fileConverter.set_and_save_dirs("_thumbs_", args.to, args.dir)
-			print(f"\n😎 FileConverting is running. It just takes a moment to create your thumbnails.\nYou find your fill in the folder ./{args.dir}.")
+			print(f"\n😎 FileConverting is running. It just takes a moment to create your thumbnails.\nYou find your files in the folder ./{args.dir}.")
 			for file in files:
 				filename, _ = file.split(".")
 				thumbnail_filename = filename + "_thumb_" + str(args.thumb[0]) + "x" + str(args.thumb[1])
@@ -279,13 +279,13 @@ def validate_file(filename):
 		_, extentsion = filename.split(".")
 	except ValueError:
 		return False
-	if re.search(r"^([a-zA-Z_0-9]{2,})\.([a-zA-Z_0-9]{2,})$", filename) and extentsion in file_extentions_img:
+	if re.search(r"^([a-zA-Z_0-9]{2,})\.([a-zA-Z_-0-9]{2,})$", filename) and extentsion in file_extentions_img:
 		return True
 	return False
 
 
 def validate_path(path):
-	if re.search(r"^(\.\./|\./)?([a-zA-Z_0-9]*(/){1})*$", path):
+	if re.search(r"^(\.\./|\./)?([a-zA-Z_-0-9]*(/){1})*$", path):
 		if os.path.isdir("./" + path) == False:
 			os.mkdir("./" + path)
 		return True
