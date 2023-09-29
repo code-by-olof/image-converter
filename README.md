@@ -8,7 +8,7 @@ This tool was developed as final project for Havard's CS50’s Introduction to P
 Download the image converter files or install them via git clone:
 
 ```
-git clone ssh://git@github.com/hooked-to-coding/image-converter.git
+git clone https://github.com/code-by-olof/image-converter.git
 ```
 
 You may have to install the following libaries:
