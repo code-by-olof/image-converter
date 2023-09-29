@@ -34,6 +34,7 @@ python3 -m pip install tabulate
 
 Here is some short video demos of how to use the Image Converter. Look also at the [examples](#examples) to get a better understanding of the correct usage.
 [![asciicast](https://asciinema.org/a/TSKDycB5RXWPzrfGIv3qNwz4L.svg)](https://asciinema.org/a/TSKDycB5RXWPzrfGIv3qNwz4L)
+
 [![asciicast](https://asciinema.org/a/YwaSV8YlJSSN2FN4W9PMRrhwC.svg)](https://asciinema.org/a/YwaSV8YlJSSN2FN4W9PMRrhwC)
 
 ### Supported file formats
