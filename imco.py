@@ -80,13 +80,15 @@ class FileConvert:
 
 
 	def save_output_filename(self, extension, name=""):
+		print("name: ", name)
 		if name == None:
 			filename,_ = self._filename_input.split(".")
 			filename = filename + "." + str(extension)
 		else:
 			filename = str(name) + "." + str(extension)
+		print("filename: ", filename)
 		if validate_file(filename) == False:
-			sys.exit("Invalid input")
+			sys.exit("Invalid input/filename.")
 		self._filename_output = filename
 
 
@@ -150,7 +152,7 @@ class FileConvert:
 	def save_files(self, filename, file_extension, new_file_name="", img_filter=""):
 		self.save_input_filename(filename)
 		if new_file_name == None:
-			new_file_name = filename
+			new_file_name,_ = filename.split(".")
 		self.save_output_filename(file_extension, new_file_name)
 		if img_filter is not None:
 			self._image_filter = img_filter
