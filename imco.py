@@ -80,13 +80,11 @@ class FileConvert:
 
 
 	def save_output_filename(self, extension, name=""):
-		print("name: ", name)
 		if name == None:
 			filename,_ = self._filename_input.split(".")
 			filename = filename + "." + str(extension)
 		else:
 			filename = str(name) + "." + str(extension)
-		print("filename: ", filename)
 		if validate_file(filename) == False:
 			sys.exit("Invalid input/filename.")
 		self._filename_output = filename

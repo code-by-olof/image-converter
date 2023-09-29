@@ -32,8 +32,9 @@ python3 -m pip install tabulate
 
 ### Demo
 
-Here is a short video demo of how to use the Image Converter. Look also at the [examples](#examples) to get a better understanding of the correct usage.
-[![asciicast](https://asciinema.org/a/rCOiVAmd6GOqgnQIAp3pTeTJp.svg)](https://asciinema.org/a/rCOiVAmd6GOqgnQIAp3pTeTJp)
+Here is some short video demos of how to use the Image Converter. Look also at the [examples](#examples) to get a better understanding of the correct usage.
+[![asciicast](https://asciinema.org/a/TSKDycB5RXWPzrfGIv3qNwz4L.svg)](https://asciinema.org/a/TSKDycB5RXWPzrfGIv3qNwz4L)
+[![asciicast](https://asciinema.org/a/YwaSV8YlJSSN2FN4W9PMRrhwC.svg)](https://asciinema.org/a/YwaSV8YlJSSN2FN4W9PMRrhwC)
 
 ### Supported file formats
 The Image Converter supports the following file format:
