@@ -80,7 +80,7 @@ class FileConvert:
 
 
 	def save_output_filename(self, extension, name=""):
-		if name == "":
+		if name == None:
 			filename,_ = self._filename_input.split(".")
 			filename = filename + "." + str(extension)
 		else:
@@ -149,6 +149,8 @@ class FileConvert:
 
 	def save_files(self, filename, file_extension, new_file_name="", img_filter=""):
 		self.save_input_filename(filename)
+		if new_file_name == None:
+			new_file_name = filename
 		self.save_output_filename(file_extension, new_file_name)
 		if img_filter is not None:
 			self._image_filter = img_filter
@@ -170,7 +172,7 @@ filter_options = ["blur", "sharpen", "smooth", "detail", "bw"]
 def main():
 	parser = argparse.ArgumentParser(prog='ImageConverter', description='Easy CLI image converter.')
 
-	parser.usage = "\n\nCONVERT A SINGLE IMAGE:\n-file file.jpg -to webp\nOptional: -dir myfolder/ and/or -name filename\n\nCONVERT MULTIPLE IMAGES FROM A FOLDER:\n-dir myfolder/ -type jpg -to webp\n"
+	parser.usage = "\n\nCONVERT A SINGLE IMAGE:\n-file file.jpg -to webp\nOptional: -dir myfolder/ and/or -name filename\n\nCONVERT MULTIPLE IMAGES FROM A FOLDER:\n-dir myfolder/ -type jpg -to webp\n\nCONVERT THUMBNAIL FROM SINGLE IMAGE:\n -thumb 225 175 -file image.jpg -to gif\n\nCONVERT MULTIPLE THUMBNAILS FROM A STACK OF IMAGES:\n-thumb 400 300 -dir _jpeg/ -to webp -type jpeg"
 
 	parser.add_argument("-file", help="filename e.g. helloworld.pdf")
 	parser.add_argument("-dir", help="get the whole directory")
@@ -213,10 +215,12 @@ def main():
 		fileConverter.set_and_save_dirs("_image_converter_", args.to, args.dir)
 		print(f"\n😎 FileConverting is running. It just takes a moment.\nYou find your files in the folder ./{args.dir}.")
 		for file in files:
-			fileConverter.save_files(file, args.to)
+			filename, extension = file.split(".")
+			filename_converted_file = "_" + args.to + "_" + filename
+			fileConverter.save_files(file, args.to, filename_converted_file, args.filter)
 			fileConverter.convert_and_save_image()
 		print(results("🤩 Your files have been sussefully converted.", fileConverter))
-
+		
 
 	if args.file is None and args.thumb is None:
 		if (args.dir and args.to) and not args.type:
@@ -279,13 +283,13 @@ def validate_file(filename):
 		_, extentsion = filename.split(".")
 	except ValueError:
 		return False
-	if re.search(r"^([a-zA-Z_0-9]{2,})\.([a-zA-Z_-0-9]{2,})$", filename) and extentsion in file_extentions_img:
+	if re.search(r"^([a-zA-Z_0-9]{2,})\.([a-zA-Z0-9]{2,})$", filename) and extentsion in file_extentions_img:
 		return True
 	return False
 
 
 def validate_path(path):
-	if re.search(r"^(\.\./|\./)?([a-zA-Z_-0-9]*(/){1})*$", path):
+	if re.search(r"^(\.\./|\./)?([a-z-A-Z_0-9]*(/){1})*$", path):
 		if os.path.isdir("./" + path) == False:
 			os.mkdir("./" + path)
 		return True
