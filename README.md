@@ -130,4 +130,4 @@ python3 imco.py -thumb 400 300 -dir _jpeg/ -to webp -type jpeg
 
 ## Support
 
-Please open an issue for support.
+Please open an [issue](https://github.com/code-by-olof/image-converter/issues/new) for support.
